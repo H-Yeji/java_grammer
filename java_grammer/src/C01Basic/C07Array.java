@@ -150,7 +150,7 @@ public class C07Array {
         // 방볍 (1) -> 오름차순 정렬 후 배열 뒤집기
         // 방법 (2) -> streamapi, lambda를 활용한 내림차순 정렬
         // intArr 대상으로 stream객체 생성
-        /*nt[] answer = Arrays.stream(intArr)
+        /*int[] answer = Arrays.stream(intArr)
                 .boxed() // int요소를 Integer로 형변환 시키는 메서드
                 .sorted(Comparator.reverseOrder()) // 내림차순 정렬
                 .mapToInt(a->a) // Integer를 다시 int로 형변환 (위에서 boxed를 했으니)
