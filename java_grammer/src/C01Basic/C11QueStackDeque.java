@@ -1,9 +1,6 @@
 package C01Basic;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.PriorityQueue;
-import java.util.Queue;
+import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 
 public class C11QueStackDeque {
@@ -68,7 +65,7 @@ public class C11QueStackDeque {
 
 
 
-        Queue<String> myQueue = new LinkedList<>();
+        /*Queue<String> myQueue = new LinkedList<>();
         myQueue.add("문서1");
         myQueue.add("문서2");
         myQueue.add("문서3");
@@ -78,7 +75,7 @@ public class C11QueStackDeque {
         }
 
         // ArrayBlockingQueue : 길이 제한 큐
-        Queue<String> queue = new ArrayBlockingQueue<>(3); // 길이 = 3으로 제한
+        Queue<String> queue = new ArrayBlockingQueue<>(3); // 길이 = 3으로 제한*/
         // add를 사용하면 길이제한 초과시 예외 발생
         /*queue.add("강낭콩");
         queue.add("강낭콩친구");
@@ -97,7 +94,7 @@ public class C11QueStackDeque {
 
         // 우선순위 큐 : 데이터를 꺼낼 때 정렬된 데이터 pop
         // 시간 복잡도 O(nlogn) -> 하나 꺼낼 때마다 logn, 다 꺼내면 * n
-        Queue<Integer> pq = new PriorityQueue<>();
+        /*Queue<Integer> pq = new PriorityQueue<>();
         pq.add(30);
         pq.add(20);
         pq.add(10);
@@ -105,7 +102,56 @@ public class C11QueStackDeque {
         pq.add(40);
         while (!pq.isEmpty()) {
             System.out.println(pq.poll()); // poll될 때 알아서 정렬되어서 출력됨
-        }
+        }*/
+
+        // stack -> 선입 후출
+        /*Stack<Integer> st1 = new Stack<>(); // stack은 인터페이스 아니고 클래스
+        st1.push(10);
+        st1.push(20);
+        st1.push(30);
+        System.out.println(st1.peek()); // 그냥 확인
+        System.out.println(st1.pop()); // 요소 제거 후 반환
+
+        // size()
+        System.out.println(st1.size());
+        // isEmpty()
+        System.out.println(st1.isEmpty());
+
+        // 실습
+        // String 객체 5개 정도 stack에 추가하고 while문으로 출력
+        Stack<String> st2 = new Stack<>();
+        st2.push("강낭콩1");
+        st2.push("강낭콩2");
+        st2.push("강낭콩3");
+        st2.push("강낭콩4");
+        st2.push("강낭콩5");
+        while (!st2.isEmpty()) {
+            System.out.println(st2.pop()); // 강낭콩5부터 출력됨
+        }*/
+
+        // deque
+        Deque<Integer> d1 = new ArrayDeque<>();
+        d1.addLast(10); // 맨 뒤에 값 넣음
+        d1.addLast(20);
+        d1.addLast(30);
+        System.out.println(d1); // [10, 20, 30]
+        d1.addFirst(0);
+        System.out.println(d1); // [0, 10, 20, 30]
+
+        // peek
+        System.out.println(d1.peekFirst()); // 0
+        System.out.println(d1.peekLast()); // 30
+
+        // poll
+        // pollFirst() = poll()
+        System.out.println(d1.pollFirst()); // 0
+        // pollLast() = pop()
+        System.out.println(d1.pollLast()); // 30
+        // 다리르 지나는 트럭 문제 풀어보기
+
+
+
+
 
 
     }

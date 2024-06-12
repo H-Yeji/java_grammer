@@ -123,7 +123,7 @@ public class C08List {
         // 1. Collections.sort() => arrayList안에 내장되어 있는 애
         Collections.sort(myList); // 기본 - 오름차순
         System.out.println("오름차순 " + myList);
-        Collections.sort(myList, Comparator.reverseOrder()); // 내림차순
+        Collections.sort(myList, Collections.reverseOrder()); // 내림차순
         System.out.println("내림차순 " + myList);
 
         // 2. 리스트객체.sort()
