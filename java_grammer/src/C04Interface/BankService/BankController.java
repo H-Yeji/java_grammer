@@ -22,7 +22,7 @@ public class BankController {
             int number2 = Integer.parseInt(sc.nextLine());
 
             if(number == 1){ // 카드
-                BankCardService bcs = new BankCardService();
+                BankService bcs = new BankCardService();
 
                 if (number2 == 1){
                     System.out.println("입금하실 금액을 입력하세요.");
@@ -36,7 +36,7 @@ public class BankController {
                 }
 
             } else { // 카카오페이
-                BankKakaoService kakao = new BankKakaoService();
+                BankService kakao = new BankKakaoService();
                 if (number2 == 1){
                     System.out.println("입금하실 금액을 입력하세요.");
                     int money = Integer.parseInt(sc.nextLine());
