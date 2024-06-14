@@ -1,5 +1,7 @@
 package C03Inheritance;
 
+// 오버로딩 : 같은 메서드 이름의 메서드 여러개 정의
+// 오버라이딩 : 부모 클래스의 메서드 재정의
 public class C03MethodOverriding {
 
     public static void main(String[] args) {
