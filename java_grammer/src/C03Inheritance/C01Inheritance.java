@@ -11,6 +11,7 @@ public class C01Inheritance extends Parents {
         // 자식 클래스라 하더라도, private 변수는 상속 및 접근 불가 (b는 못불러옴)
         System.out.println(c1.a);
         System.out.println(c1.c);
+        // System.out.println(c1.b); -> private으로 선언되어 접근 불가
         c1.parentMethod(); // 재정의된 자식메서드 출력
 
     }

@@ -52,7 +52,8 @@ public class C08RecurCombiPermu {
 
         List<Integer> myList = new ArrayList<>(Arrays.asList(1,2,3,4));
         List<List<Integer>> answer = new ArrayList<>();
-        permutation(answer, new ArrayList<>(), myList,  2, new Boolean[myList.size()]);
+        permutation(answer, new ArrayList<>(), myList,  2, new boolean[myList.size()]);
+        //permutation(answer, new ArrayList<>(), myList, 2, 0);
         System.out.println(answer);
     }
 
@@ -74,7 +75,7 @@ public class C08RecurCombiPermu {
             System.out.println("remove 후 tmp : " + Arrays.toString(tmp.toArray()));
         }
     }
-    static void permutation(List<List<Integer>> answer, List<Integer> tmp, List<Integer> myList, int count, Boolean visited[]) {
+    static void permutation(List<List<Integer>> answer, List<Integer> tmp, List<Integer> myList, int count, boolean []visited) {
 
         // 종료 로직
         if (tmp.size() == count) {
@@ -85,14 +86,25 @@ public class C08RecurCombiPermu {
         for (int i = 0; i < myList.size(); i++) {
             if (visited[i] == false) {
                 tmp.add(myList.get(i));
-                System.out.println("tmp : " + Arrays.toString(tmp.toArray()));
                 permutation(answer, tmp, myList, count, visited);
-
-                System.out.println("combination : " + Arrays.toString(answer.toArray()));
                 tmp.remove(tmp.size() - 1);
-                System.out.println("remove 후 tmp : " + Arrays.toString(tmp.toArray()));
                 visited[i] = false;
             }
         }
     }
+   /*static void perm(List<List<Integer>> answer, List<Integer> temp, List<Integer> myList, int count, boolean []visited){
+       if(temp.size() == count){
+           answer.add(new ArrayList<>(temp));
+           return;
+       }
+       for(int i=0; i<myList.size(); i++){
+           if(visited[i]==false){
+               visited[i] = true;
+               temp.add(myList.get(i));
+               perm(answer, temp, myList, count, visited);
+               temp.remove(temp.size()-1);
+               visited[i] = false;
+           }
+       }
+   }*/
 }
