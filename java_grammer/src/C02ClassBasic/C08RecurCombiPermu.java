@@ -52,7 +52,7 @@ public class C08RecurCombiPermu {
 
         List<Integer> myList = new ArrayList<>(Arrays.asList(1,2,3,4));
         List<List<Integer>> answer = new ArrayList<>();
-        permutation(answer, new ArrayList<>(), myList,  2, new boolean[myList.size()]);
+        permutation(answer, new ArrayList<>(), myList,  3, 0);
         //permutation(answer, new ArrayList<>(), myList, 2, 0);
         System.out.println(answer);
     }
@@ -75,7 +75,8 @@ public class C08RecurCombiPermu {
             System.out.println("remove 후 tmp : " + Arrays.toString(tmp.toArray()));
         }
     }
-    static void permutation(List<List<Integer>> answer, List<Integer> tmp, List<Integer> myList, int count, boolean []visited) {
+    // 아래는 중복제거된 조합 출력
+    static void permutation(List<List<Integer>> answer, List<Integer> tmp, List<Integer> myList, int count, int start) {
 
         // 종료 로직
         if (tmp.size() == count) {
@@ -83,15 +84,14 @@ public class C08RecurCombiPermu {
             answer.add(new ArrayList<>(tmp));
             return;
         }
-        for (int i = 0; i < myList.size(); i++) {
-            if (visited[i] == false) {
-                tmp.add(myList.get(i));
-                permutation(answer, tmp, myList, count, visited);
-                tmp.remove(tmp.size() - 1);
-                visited[i] = false;
-            }
+        for (int i = start; i < myList.size(); i++) {
+            tmp.add(myList.get(i));
+            System.out.println("tmp : " + tmp);
+            permutation(answer, tmp, myList, count, i + 1);
+            tmp.remove(tmp.size() - 1);
         }
     }
+    // 아래는 자기자신 [1,1]부터 시작한 조합의 수
    /*static void perm(List<List<Integer>> answer, List<Integer> temp, List<Integer> myList, int count, boolean []visited){
        if(temp.size() == count){
            answer.add(new ArrayList<>(temp));
