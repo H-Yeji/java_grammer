@@ -81,7 +81,7 @@ public class C03ComparableComparator {
         // 실습2
         // [[4, 5], [1, 2], [3, 1], [5, 1]]
         // 위 배열이 들어간 아래 리스트를 배열에 0번째가 아닌 1번째를 기준으로 내림차순 정렬
-        /*List<int[]> myList = new ArrayList<>();
+        List<int[]> myList = new ArrayList<>();
         myList.add(new int[]{4, 5});
         myList.add(new int[]{1, 2});
         myList.add(new int[]{3, 1});
@@ -106,10 +106,48 @@ public class C03ComparableComparator {
         myList.sort(myComparator4);
         for (int[] a : myList) {
             System.out.println(Arrays.toString(a));
-        }*/
+        }
+
+
+        // 6/17
+        System.out.println("=============pq 정렬================");
+        String[] stArr2 = {"hello", "java", "c++", "world2"};
+
+        //Queue<String> pq = new PriorityQueue<>(Collections.reverseOrder());
+        // Queue<String> pq = new PriorityQueue<>(Comparator.reverseOrder()); // 둘 다 가능 => 내림차순
+        Queue<String> pq = new PriorityQueue<>((a, b) -> a.length() - b.length()); // 길이 순서대로 오름차순
+        // -> priorirtqueue는 정렬되어 poll되기 때문엔 내부에 comparator를 가지고 있어서 바로 람다식 사용 가능
+        // -> TreeMap도 내부에 comparator 가지고 있음 !
+        for (String s : stArr2) {
+            pq.add(s);
+        }
+        while (!pq.isEmpty()) {
+            System.out.println(pq.poll());
+        }
+
+        // runable 인터페이스 : 스레드 구현
+        // 스레드 구현 방법 : 스레드 상속, runnable 주입
+        // runnable 인터페이스 주입을 통한 스레드 생성
+        Thread t1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("새로 생성한 스레드1 입니다.");
+            }
+        });
+        t1.start();
+        // 람다식 가능
+        Thread t2 = new Thread(() -> {
+            System.out.println("새로 생성한 스레드2 입니다.");
+        });
+        t2.start();
+
+        new Thread(() -> System.out.println("새로 생성한 스레드3 입니다.")).start();
+        System.out.println("main 스레드 입니다."); //기본적으로 스레드 1개가 있음
 
     }
 }
+
+
 //class Student implements Comparable<Student>{ // 어떤 객체와 비교할건지 Comparable<Student> 써줘야함
 class Student implements Comparator<Student> { // 어떤 객체와 비교할건지 Comparable<Student> 써줘야함
 
