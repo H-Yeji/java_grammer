@@ -1,7 +1,6 @@
 package C05AnonymousLambda;
 
 import java.util.*;
-import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
