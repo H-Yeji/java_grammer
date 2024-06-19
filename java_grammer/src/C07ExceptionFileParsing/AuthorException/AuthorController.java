@@ -38,11 +38,8 @@ public class AuthorController {
                     // 회원가입
                     authorService.register(name, email, pwd);
 
-                } catch (IllegalArgumentException e) {
-                    System.out.println("비밀번호가 너무 짧습니다.");
-
                 } catch (RuntimeException e) {
-                    System.out.println("존재하는 이메일 입니다.");
+                    System.out.println(e.getMessage());
                 }
             } else {
 

@@ -116,15 +116,7 @@ public class C04StreamApi {
         //Arrays.stream(intArr2).forEach(System.out::println); // 클래스::메소드
         //Arrays.stream(intArr2).forEach(a-> System.out.println(a)); // 위랑 같음
 
-        // reduce
-        // reduce(초기값, 연산식);
-        int allMultiply = Arrays.stream(intArr2).reduce(1, (a, b) -> a * b); // 240000
-        int allAdd = Arrays.stream(intArr2).reduce(0, (a, b) -> a + b); // 100
-        System.out.println(allMultiply);
-        System.out.println(allAdd);
 
-        String stAllAdd = Arrays.stream(stArr).reduce("", (a, b) -> a + b);
-        System.out.println(stAllAdd); // htmlcssjavapythonjavascript
 
 
         int intArrSum = Arrays.stream(intArr2).sum();

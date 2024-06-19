@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "yeji",
+    "classNum": "1",
+    "city": "seoul"
+  },
+  {
+    "id": 2,
+    "name": "dding2",
+    "classNum": "2",
+    "city": "anyang"
+  },
+  {
+    "id": 3,
+    "name": "arorong",
+    "classNum": "3",
+    "city": "boocheon"
+  }
+]
