@@ -57,6 +57,8 @@ public class C03JsonParsing1 {
     }
 }
 
+// objectMapper는 getter 또는 setter 메서드명을 통해 필드값 유추
+// 실제 값의 setting은 reflection이라는 기술을 통해 변수 값을 할당
 class Student {
 
     private int id;
