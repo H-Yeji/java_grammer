@@ -21,6 +21,8 @@ public class Library {
     }*/
 
     // synchronized 키워드를 통해 해당 메서드에 한해서 lock 걸도록 설정
+    // 메서드 차원에 synchronized를 걸면
+    // 메서드 앞에서 줄서서 기다렸다가 하나씩 들어옴 (하나씩 실행)
     public static synchronized void borrow() {
         if (bookCount > 0) {
             try {
