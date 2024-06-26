@@ -7,7 +7,7 @@ import java.util.*;
 
 public class BOJ20920 {
 
-    // 영단어 암기는 괴로워
+    // 영단어 암기는 괴로워 - 정렬
     public static void main(String[] args) throws IOException {
 
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -25,72 +25,28 @@ public class BOJ20920 {
         arr = Arrays.stream(arr)
                 .filter(a->a.length()>=m)
                 .toArray(String[]::new);
-
-        // 길이순 -> 사전순으로 정렬
-        Comparator<String> com = (a, b) -> {
-            if (a.length() != b.length()) {
-                return b.length() - a.length();
-            } else {
-                return a.compareTo(b);
-            }
-        };
-        Arrays.sort(arr, com);
-
-        // 위에서 얻은 배열을 map에 <word, count>형태로 넣기
+        // map에 word와 개수 넣기
         Map<String, Integer> map = new LinkedHashMap<>();
         for (int i = 0; i < arr.length; i++) {
             map.put(arr[i], map.getOrDefault(arr[i], 0) + 1);
         }
-
         List<Map.Entry<String, Integer>> list = new ArrayList<>(map.entrySet());
         list.sort((a, b) -> {
-            if (b.getValue().equals(a.getValue())) { // 개수가 같으면
-                return a.getKey().compareTo(b.getKey()); // 사전순 오름차순
+            if (a.getValue() != b.getValue()) { // count가 다르면 -> count 순으로 내림차순
+                return b.getValue() - a.getValue();
+            } else { // count가 같으면
+                if (a.getKey().length() != b.getKey().length()) { // word 길이로 내림차순
+                    return b.getKey().length() - a.getKey().length();
+                } else { // word의 길이가 같으면
+                    return a.getKey().compareTo(b.getKey()); // 사전순으로 정렬
+                }
             }
-            return b.getValue() - a.getValue(); // 개수가 같지 않으면 값으로 내림차순
         });
 
+        StringBuilder sb = new StringBuilder();
         for (Map.Entry<String, Integer> l : list) {
-            System.out.println(l.getKey());
+            sb.append(l.getKey()).append("\n");
         }
+        System.out.println(sb);
     }
 }
-
-/**
- * import java.io.BufferedReader;
- * import java.io.IOException;
- * import java.io.InputStreamReader;
- * import java.util.*;
- *
- * public class BOJ20920 {
- *
- *     public static void main(String[] args) throws IOException {
- *         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
- *         StringTokenizer st = new StringTokenizer(br.readLine());
- *         int n = Integer.parseInt(st.nextToken());
- *         int m = Integer.parseInt(st.nextToken());
- *
- *         Map<String, Integer> wordCount = new HashMap<>();
- *
- *         for (int i = 0; i < n; i++) {
- *             String word = br.readLine();
- *             if (word.length() >= m) {
- *                 wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
- *             }
- *         }
- *
- *         List<String> sortedWords = new ArrayList<>(wordCount.keySet());
- *         sortedWords.sort((a, b) -> {
- *             if (wordCount.get(a).equals(wordCount.get(b))) {
- *                 if (a.length() != b.length()) {
- *                     return Integer.compare(b.length(), a.length());  // 길이가 긴 순
- *                 }
- *                 return a.compareTo(b);  // 사전순
- *             }
- *             return Integer.compare(wordCount.get(b), wordCount.get(a));  // 빈도수 높은 순
- *         });
- *
- *         sortedWords.forEach(System.out::println);
- *     }
- * }
- */
