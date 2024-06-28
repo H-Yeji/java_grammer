@@ -45,16 +45,17 @@ public class C08RecurCombiPermu {
         }
         System.out.println(Arrays.toString(combinations.toArray()));*/
 
+        List<Integer> myList = new ArrayList<>(Arrays.asList(1,2,3));
+        List<List<Integer>> answer = new ArrayList<>();
+        combination(answer, new ArrayList<>(), myList,  3, 0);
+        System.out.println(answer);
+
         /*List<Integer> myList = new ArrayList<>(Arrays.asList(1,2,3,4));
         List<List<Integer>> answer = new ArrayList<>();
-        combination(answer, new ArrayList<>(), myList,  2, 0);
-        System.out.println(answer);*/
-
-        List<Integer> myList = new ArrayList<>(Arrays.asList(1,2,3,4));
-        List<List<Integer>> answer = new ArrayList<>();
-        permutation(answer, new ArrayList<>(), myList,  3, 0);
+        boolean []visited = new boolean[0];
+        perm(answer, new ArrayList<>(), myList,  3, visited);
         //permutation(answer, new ArrayList<>(), myList, 2, 0);
-        System.out.println(answer);
+        System.out.println(answer);*/
     }
 
     static void combination(List<List<Integer>> answer, List<Integer> tmp, List<Integer> myList, int count, int start) {
@@ -68,7 +69,7 @@ public class C08RecurCombiPermu {
         for (int i = start; i < myList.size(); i++) {
             tmp.add(myList.get(i));
             System.out.println("tmp : " + Arrays.toString(tmp.toArray()));
-            combination(answer, tmp, myList, count, i + 1);
+            combination(answer, tmp, myList, count, i);
 
             System.out.println("combination : " + Arrays.toString(answer.toArray()));
             tmp.remove(tmp.size() - 1);
@@ -76,7 +77,7 @@ public class C08RecurCombiPermu {
         }
     }
     // 아래는 중복제거된 조합 출력
-    static void permutation(List<List<Integer>> answer, List<Integer> tmp, List<Integer> myList, int count, int start) {
+    /*static void permutation(List<List<Integer>> answer, List<Integer> tmp, List<Integer> myList, int count, int start) {
 
         // 종료 로직
         if (tmp.size() == count) {
@@ -90,9 +91,9 @@ public class C08RecurCombiPermu {
             permutation(answer, tmp, myList, count, i + 1);
             tmp.remove(tmp.size() - 1);
         }
-    }
+    }*/
     // 아래는 자기자신 [1,1]부터 시작한 조합의 수
-   /*static void perm(List<List<Integer>> answer, List<Integer> temp, List<Integer> myList, int count, boolean []visited){
+   static void perm(List<List<Integer>> answer, List<Integer> temp, List<Integer> myList, int count, boolean []visited){
        if(temp.size() == count){
            answer.add(new ArrayList<>(temp));
            return;
@@ -106,5 +107,5 @@ public class C08RecurCombiPermu {
                visited[i] = false;
            }
        }
-   }*/
+   }
 }
