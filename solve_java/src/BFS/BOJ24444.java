@@ -51,7 +51,7 @@ public class BOJ24444 {
                 visited_order[num] = cnt;
                 cnt++;
                 for (int neighbor: graph.get(num)) {
-                    q.offer(neighbor);
+                    q.add(neighbor);
                 }
             }
         }
