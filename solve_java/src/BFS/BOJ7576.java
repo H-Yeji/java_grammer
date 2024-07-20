@@ -8,6 +8,8 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class BOJ7576 {
+
+    // 토마토 - 골드5
     static int[][] box;
     static int[][] days;
     static int n, m;
