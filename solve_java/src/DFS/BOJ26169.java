@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOJ26169 {
-    // 실버3 - 세 번 이내에 사과를 먹자
+    // 실버3 - 세 번 이내에 사과를 먹자(백트래킹)
     static int[][] arr;
     static int[] dx = {-1, 1, 0, 0};
     static int[] dy = {0, 0, -1, 1};
