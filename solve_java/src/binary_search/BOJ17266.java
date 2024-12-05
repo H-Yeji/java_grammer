@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOJ17266 {
-
+    // 실버4 어두운 굴다리
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -19,29 +19,35 @@ public class BOJ17266 {
             location[i] = Integer.parseInt(st.nextToken());
         }
 
-        int low = 1;
-        int high = n;
+        int low = 1; // 굴다리 최소 길이
+        int high = n; // 굴다리 길이 최대
         int result = 0;
 
         while(low <= high){
             int mid = (low + high) / 2;
+            boolean flag = true;
 
-            int temp = 0;
+            int point = 0;
             for (int loc: location){
-                if (loc - mid > temp){
-                    low = mid + 1;
-                    break;
+                // 현재 위치에서 mid만큼 불을 비춘게 이전 위치(point)까지 도달하지 못하면
+                // 비추지 못하는 곳이 존재한다는 뜻 = falase
+                if (loc - mid <= point) {
+                    point = loc + mid; // 0부터 loc+mid까지 비출 수 있음
+                } else {
+                    flag = false;
                 }
-                temp = loc + mid;
             }
 
-            if (temp < n){
+            // 마지막부터 point까지도 확인
+            if (n - point > 0) flag = false;
+            else flag = true;
+
+            if (flag){
+                result = mid;
+                high = mid - 1;
+            } else {
                 low = mid + 1;
-                continue;
             }
-
-            result = mid;
-            high = mid - 1;
         }
 
         System.out.println(result);
