@@ -22,7 +22,7 @@ public class BOJ10157 {
         }
 
         int[][] seat = new int[r][c];
-        int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}}; // 상하좌우
+        int[][] directions = {{-1, 0}, {0, 1}, {1, 0}, {0, -1}}; // up > right > down > left
         int directionIndex = 0;
 
         int x = r - 1, y = 0;
